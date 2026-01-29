@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import pc from 'picocolors';
 import { copyTemplate } from './utils/copy.js';
 import { updatePackageJson } from './utils/package.js';
+import { getVersion } from './utils/version.js';
 
 // ESM 模块中获取 __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -17,7 +18,19 @@ interface ProjectConfig {
 }
 
 export async function create(projectName?: string): Promise<void> {
-  console.log(pc.cyan('\n🚀 欢迎使用 Backend Forge 脚手架\n'));
+  const version = getVersion();
+
+  // 显示炫酷的欢迎信息
+  console.log(pc.cyan(`
+╔══════════════════════════════════════════════════════╗
+║                                                      ║
+║                 BACKEND FORGE                        ║
+║                                                      ║
+║          Fastify + TypeScript Scaffold               ║
+║                     v${version.padEnd(28)}║
+║                                                      ║
+╚══════════════════════════════════════════════════════╝
+`));
 
   // 收集项目信息
   const config = await collectProjectInfo(projectName);
