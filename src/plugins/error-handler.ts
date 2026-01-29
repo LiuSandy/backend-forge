@@ -6,6 +6,16 @@ import fp from 'fastify-plugin'
  * 捕获所有未处理的错误，转换为统一的响应格式
  */
 const errorHandlerPlugin: FastifyPluginAsync = async (fastify) => {
+  // 处理 404 Not Found
+  fastify.setNotFoundHandler((_, reply) => {
+    return reply.fail(
+      'NOT_FOUND',
+      '请求的资源不存在',
+      undefined,
+      404
+    )
+  })
+
   fastify.setErrorHandler((error: FastifyError, request, reply) => {
     // 记录错误日志
     request.log.error(error)

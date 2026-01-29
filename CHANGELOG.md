@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.2  (January 29, 2026)
+- fix: test error
+
+
 ## v1.0.1  (January 29, 2026)
 - feat: add CLI tool and version management system
 

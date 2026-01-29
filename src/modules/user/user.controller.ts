@@ -46,7 +46,7 @@ export class UserController {
   ) {
     try {
       const user = await this.userService.createUser(request.body)
-      return reply.code(201).success(user, '用户创建成功')
+      return reply.code(200).success(user, '用户创建成功')
     } catch (error) {
       if (error instanceof Error) {
         return reply.fail('CREATE_USER_FAILED', error.message)
