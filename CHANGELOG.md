@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.6  (January 29, 2026)
+- fix: auto-generate .env and README, exclude .env.example from generated projects
+
+
 ## v1.0.5  (January 29, 2026)
 - feat: add version and help commands to CLI
 
