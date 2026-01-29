@@ -27,7 +27,7 @@ export async function create(projectName?: string): Promise<void> {
 ║                 BACKEND FORGE                        ║
 ║                                                      ║
 ║          Fastify + TypeScript Scaffold               ║
-║                     v${version.padEnd(28)}║
+║                     v${version.padEnd(28)} ║
 ║                                                      ║
 ╚══════════════════════════════════════════════════════╝
 `));
@@ -115,8 +115,9 @@ function displaySuccessMessage(projectName: string): void {
   console.log(pc.cyan('下一步操作:\n'));
   console.log(`  cd ${projectName}`);
   console.log(`  pnpm install`);
-  console.log(`  cp .env.example .env`);
   console.log(`  pnpm dev\n`);
+  console.log(pc.cyan('💡 提示:\n'));
+  console.log('  - 根据需要修改 .env 配置\n');
   console.log(pc.cyan('可用命令:\n'));
   console.log(`  ${pc.bold('pnpm dev')}          - 启动开发服务器`);
   console.log(`  ${pc.bold('pnpm build')}        - 构建生产版本`);

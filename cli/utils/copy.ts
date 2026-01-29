@@ -15,6 +15,8 @@ const EXCLUDE_PATTERNS = [
   'cli',
   'docs',
   '.DS_Store',
+  'README.md', // 项目级 README，由 PROJECT_README.md 重命名替代
+  '.env.example', // 排除示例，已自动生成 .env
 ];
 
 /**
@@ -27,11 +29,22 @@ const RENAME_FILES: Record<string, string> = {
 
 /**
  * 拷贝模板文件到目标目录
+ * @param templateDir - 源模板目录
+ * @param targetDir - 目标目录
+ * @param isRoot - 是否是根目录调用（内部参数）
+ * @param rootTemplateDir - 根源目录（用于创建 .env）
  */
 export async function copyTemplate(
   templateDir: string,
-  targetDir: string
+  targetDir: string,
+  isRoot = true,
+  rootTemplateDir?: string
 ): Promise<void> {
+  // 记录根源目录（仅在第一次调用时）
+  if (isRoot) {
+    rootTemplateDir = templateDir;
+  }
+
   const files = fs.readdirSync(templateDir);
 
   for (const file of files) {
@@ -48,10 +61,19 @@ export async function copyTemplate(
     if (stat.isDirectory()) {
       // 递归拷贝目录
       fs.mkdirSync(destPath, { recursive: true });
-      await copyTemplate(srcPath, destPath);
+      await copyTemplate(srcPath, destPath, false, rootTemplateDir);
     } else {
       // 拷贝文件
       fs.copyFileSync(srcPath, destPath);
+    }
+  }
+
+  // 从源的 .env.example 创建 .env 文件（仅在顶层目录）
+  if (isRoot && rootTemplateDir) {
+    const srcEnvExamplePath = path.join(rootTemplateDir, '.env.example');
+    const envPath = path.join(targetDir, '.env');
+    if (fs.existsSync(srcEnvExamplePath) && !fs.existsSync(envPath)) {
+      fs.copyFileSync(srcEnvExamplePath, envPath);
     }
   }
 }
