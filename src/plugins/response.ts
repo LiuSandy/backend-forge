@@ -1,4 +1,4 @@
-import type { FastifyPluginAsync } from 'fastify'
+import type { FastifyPluginAsync, FastifyReply } from 'fastify'
 import fp from 'fastify-plugin'
 import type { SuccessResponse, ErrorResponse } from '@/types/response.js'
 
@@ -7,7 +7,7 @@ import type { SuccessResponse, ErrorResponse } from '@/types/response.js'
  * 为 FastifyReply 添加 success() 和 fail() 方法
  */
 const responsePlugin: FastifyPluginAsync = async (fastify) => {
-  fastify.decorateReply('success', function <T>(data: T, message?: string) {
+  fastify.decorateReply('success', function <T>(this: FastifyReply, data: T, message?: string) {
     const response: SuccessResponse<T> = {
       success: true,
       data,
@@ -18,6 +18,7 @@ const responsePlugin: FastifyPluginAsync = async (fastify) => {
   })
 
   fastify.decorateReply('fail', function (
+    this: FastifyReply,
     code: string,
     message: string,
     details?: unknown,
