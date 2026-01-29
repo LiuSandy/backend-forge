@@ -1,6 +1,6 @@
 {
   "name": "backend-forge",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "基于 Fastify + TypeScript 的后端项目模板脚手架",
   "main": "dist/server.js",
   "type": "module",
@@ -30,7 +30,7 @@
     "test:coverage": "vitest --coverage",
     "prepare": "husky",
     "bump-version": "node scripts/bump-version.js",
-    "prepublishOnly": "pnpm build && pnpm test"
+    "prepublishOnly": "pnpm build && vitest run"
   },
   "keywords": [
     "fastify",
