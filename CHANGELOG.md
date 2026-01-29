@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.4  (January 29, 2026)
+- fix: resolve ESM __dirname issue and prepare for npm publishing
+
+
 ## v1.0.3  (January 29, 2026)
 - chore: config change
 

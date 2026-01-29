@@ -1,9 +1,14 @@
 import prompts from 'prompts';
 import path from 'node:path';
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import pc from 'picocolors';
 import { copyTemplate } from './utils/copy.js';
 import { updatePackageJson } from './utils/package.js';
+
+// ESM 模块中获取 __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 interface ProjectConfig {
   projectName: string;

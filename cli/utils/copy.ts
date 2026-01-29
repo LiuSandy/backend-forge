@@ -22,6 +22,7 @@ const EXCLUDE_PATTERNS = [
  */
 const RENAME_FILES: Record<string, string> = {
   _gitignore: '.gitignore',
+  'PROJECT_README.md': 'README.md',
 };
 
 /**

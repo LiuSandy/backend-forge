@@ -1,6 +1,6 @@
 {
   "name": "backend-forge-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "基于 Fastify + TypeScript 的后端项目模板脚手架",
   "main": "dist/server.js",
   "type": "module",
@@ -15,6 +15,7 @@
     ".eslintrc.json",
     "tsconfig.json",
     "tsconfig.eslint.json",
+    "PROJECT_README.md",
     "README.md",
     "LICENSE",
     "VERSION",
