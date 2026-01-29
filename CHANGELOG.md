@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.5  (January 29, 2026)
+- feat: add version and help commands to CLI
+
+
 ## v1.0.4  (January 29, 2026)
 - fix: resolve ESM __dirname issue and prepare for npm publishing
 
