@@ -1,5 +1,5 @@
 {
-  "name": "backend-forge",
+  "name": "backend-forge-cli",
   "version": "1.0.3",
   "description": "基于 Fastify + TypeScript 的后端项目模板脚手架",
   "main": "dist/server.js",
